@@ -27,6 +27,11 @@ def output_selected_cheese():
         print("- no cheese")
 
 
+def output_options(dct):
+    for k, v in dct.items():
+        print(f"{k}. {v}")
+
+
 def output_selected_element(label, element):
     print("{} {}".format(label, element))
 
@@ -46,30 +51,40 @@ def output_order_summary():
 SANDWICHES = []
 
 while True:
-    BREADS = [
-        'rye',
-        'sourdough',
-        'white',
-    ]
-    BREAD = prompt_user_to_make_a_choice("\nWhat kind of bread would you like?",
-                                         BREADS)
-    MEATS = [
-        'ham',
-        'roast beef',
-        'turkey',
-    ]
-    MEAT = prompt_user_to_make_a_choice("\nWhat kind of meat would you like?",
-                                        MEATS)
+    BREADS = {
+        1: 'rye',
+        2: 'sourdough',
+        3: 'white',
+    }
+    print("\nWhat kind of bread would you like?")
+    output_options(BREADS)
+    number_of_breads = len(BREADS)
+    user_choice = pyip.inputInt("> ", min=1, max=number_of_breads)
+    BREAD = BREADS[user_choice]
+    
+    MEATS = {
+        1: 'ham',
+        2: 'roast beef',
+        3: 'turkey',
+    }
+    print("\nWhat kind of meat would you like?")
+    output_options(MEATS)
+    number_of_meats = len(MEATS)
+    user_choice = pyip.inputInt("> ", min=1, max=number_of_meats)
+    MEAT = MEATS[user_choice]
     WITH_CHEESE = prompt_user_for_yes_or_no("\nWould you like cheese "
                                             "(yes or no?")
-    CHEESES = [
-        "american",
-        "cheddar",
-        "provelone",
-    ]
+
     if WITH_CHEESE == "yes":
-        CHEESE = prompt_user_to_make_a_choice("\nWhat kind of cheese would you "
-                                              "like?", CHEESES)
+        CHEESES = {
+            1: "american",
+            2: "cheddar",
+            3: "provelone",
+        }
+        output_options(CHEESES)
+        number_of_cheeses = len(CHEESES)
+        user_choice = pyip.inputInt("> ", min=1, max=number_of_cheeses)
+        CHEESE = CHEESES[user_choice]
     else:
         CHEESE = "no"
 
