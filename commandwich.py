@@ -1,6 +1,4 @@
-"""
-Command line sandwich ordering app.
-"""
+"""Command line sandwich ordering app."""
 
 import pyinputplus as pyip
 
@@ -108,7 +106,7 @@ while True:
     prompt_user_for_number_of_sandwiches("\nHow many sandwiches would you "
                                          "like?")
 
-    print("\nWould you like to order another sandwich?")
+    print("\nWould you like to order another sandwich (yes or no)?")
     ORDER_ANOTHER = pyip.inputYesNo("> ", blank=True)
     SANDWICH = (BREAD, MEAT, CHEESE, WITH_MAYO, WITH_MUSTARD,
                 WITH_LETTUCE_AND_TOMATO, NUMBER_OF_SANDWICHES)
